@@ -1,5 +1,5 @@
 /* editor */
-.wp-block-beapi-accordion {
+.wp-block-blockparty-accordion {
     &-item,
     &-panel,
     .wp-block {
@@ -12,11 +12,11 @@
         margin-bottom: 0;
     }
 
-    &-item.has-child-selected .wp-block-beapi-accordion-panel {
+    &-item.has-child-selected .wp-block-blockparty-accordion-panel {
         display: block;
     }
 
-    &-item.has-child-selected .wp-block-beapi-accordion-trigger::after {
+    &-item.has-child-selected .wp-block-blockparty-accordion-trigger::after {
         transform: translateY(-50%) rotate(-135deg);
     }
 
