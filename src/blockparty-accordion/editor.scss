@@ -1,0 +1,38 @@
+/* editor */
+.wp-block-beapi-accordion {
+    &-item,
+    &-panel,
+    .wp-block {
+        max-width: 100% !important;
+    }
+
+    &-item,
+    &-panel {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    &-item.has-child-selected .wp-block-beapi-accordion-panel {
+        display: block;
+    }
+
+    &-item.has-child-selected .wp-block-beapi-accordion-trigger::after {
+        transform: translateY(-50%) rotate(-135deg);
+    }
+
+    &-summary {
+
+        .components-placeholder.components-placeholder {
+            min-height: 24px;
+            padding: 10px;
+        }
+
+        .components-placeholder__label {
+            margin-bottom: 0;
+        }
+
+        .rich-text {
+            white-space: nowrap;
+        }
+    }
+}

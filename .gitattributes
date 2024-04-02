@@ -1,0 +1,19 @@
+/.git export-ignore
+/.github export-ignore
+/src export-ignore
+/node_modules export-ignore
+
+/.distignore export-ignore
+/.editorconfig export-ignore
+/.eslintrc export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.plugin-data export-ignore
+/.stylelintrc export-ignore
+/composer.json export-ignore
+/composer.lock export-ignore -diff
+/grumphp.yml export-ignore -diff
+/package.json export-ignore
+/package-lock.json export-ignore -diff
+/phpcs.xml export-ignore -diff
+/psalm.xml export-ignore -diff
