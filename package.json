@@ -1,0 +1,39 @@
+{
+	"name": "blockparty-accordion",
+	"version": "1.0.0",
+	"description": "Accessible Accordion block for WordPress",
+	"author": "Be API Technical team",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start",
+		"make-pot": "wp i18n make-pot . languages/blockparty-accordion.pot --slug=blockparty-accordion --domain=blockparty-accordion --exclude=node_modules,src",
+		"make-json": "wp i18n make-json languages/ --no-purge"
+	},
+	"devDependencies": {
+		"@wordpress/eslint-plugin": "^17.11.0",
+		"@wordpress/prettier-config": "^3.11.0",
+		"@wordpress/scripts": "^27.5.0",
+		"@wordpress/stylelint-config": "^21.37.0",
+		"eslint-config-prettier": "^8.5.0"
+	},
+	"dependencies": {
+		"@beapi/be-a11y": "^1.1.0",
+		"@wordpress/components": "^27.2.0",
+		"@wordpress/data": "^9.24.0",
+		"@wp-now/wp-now": "^0.1.66",
+		"stylelint-config-recess-order": "^3.0.0",
+		"stylelint-scss": "^4.3.0",
+		"wp-now": "^1.0.7"
+	},
+	"prettier": "@wordpress/prettier-config",
+	"volta": {
+		"node": "20.12.0"
+	}
+}

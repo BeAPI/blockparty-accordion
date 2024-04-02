@@ -1,0 +1,81 @@
+/* style */
+.wp-block-blockparty-accordion {
+    --wp--blockparty--accordion--border: 1px solid #000;
+    --wp--blockparty--accordion--font-size: var(--wp--preset--font-size--h-3);
+    --wp--blockparty--accordion--font-weigt: 400;
+    --wp--blockparty--accordion--padding: 1rem 0;
+    --wp--blockparty--accordion--padding-wiht-background: 1rem;
+    --wp--blockparty--accordion--icon-size: 24px;
+
+    $block: &;
+
+    &-summary {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: var(--wp--blockparty--accordion--padding) !important;
+        border-bottom: var(--wp--blockparty--accordion--border);
+
+        .wp-block-beapi-icon-block {
+            margin-top: 0;
+            margin-right: 8px;
+            margin-bottom: 0;
+
+            .icon-container {
+                display: flex;
+            }
+        }
+
+        svg {
+            width: var(--wp--blockparty--accordion--icon-size);
+            height: var(--wp--blockparty--accordion--icon-size);
+        }
+    }
+
+    &-panel {
+        display: none;
+    }
+
+    &-panel__inner {
+        padding: var(--wp--blockparty--accordion--padding);
+    }
+
+    &-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        font-size: var(--wp--blockparty--accordion--font-size);
+        font-weight: var(--wp--blockparty--accordion--font-weigt);
+        text-align: left;
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        appearance: none;
+
+        &::after {
+            position: absolute;
+            top: 50%;
+            right: .5rem;
+            width: .5rem;
+            height: .5rem;
+            pointer-events: none;
+            content: "";
+            border: solid currentcolor;
+            border-width: 0 2px 2px 0;
+            transform: translateY(-60%) rotate(45deg);
+        }
+
+        &[aria-expanded="true"]::after {
+            transform: translateY(-50%) rotate(-135deg);
+        }
+    }
+
+    &-summary.has-background,
+    .has-background &-summary,
+    .has-background &-panel__inner {
+        padding: var(--wp--blockparty--accordion--padding-wiht-background) !important;
+    }
+}
