@@ -24,7 +24,7 @@
 		"eslint-config-prettier": "^8.5.0"
 	},
 	"dependencies": {
-		"@beapi/be-a11y": "^1.1.0",
+		"@beapi/be-a11y": "^1.5.5",
 		"@wordpress/components": "^27.2.0",
 		"@wordpress/data": "^9.24.0",
 		"@wp-now/wp-now": "^0.1.66",

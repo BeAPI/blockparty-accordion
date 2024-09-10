@@ -32,6 +32,24 @@ function init(): void {
 	// Load translations for JS
 	wp_set_script_translations( 'blockparty-accordion-summary-editor-script', 'blockparty-accordion', BLOCKPARTY_ACCORDION_DIR . '/languages' );
 
+	// Pass PHP values to main script
+	$constants = [
+		'accordionConfig' => apply_filters(
+			'beapi_accordion_block_config',
+			[
+				'allowMultiple'   => true,
+				'closedDefault'   => true,
+				'forceExpand'     => false,
+				'hasAnimation'    => true,
+				'openMultiple'    => false,
+				'panelSelector'   => '.wp-block-blockparty-accordion-panel',
+				'prefixId'        => 'block-accordion',
+				'triggerSelector' => '.wp-block-blockparty-accordion-trigger',
+			]
+		),
+	];
+	wp_localize_script( 'blockparty-accordion-view-script', 'beapiAccordionBlock', $constants );
+
 	do_action( 'blockparty_accordion_init' );
 }
 
