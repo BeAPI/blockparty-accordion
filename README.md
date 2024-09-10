@@ -19,10 +19,6 @@ add_filter( 'beapi_accordion_block_config', function( $config ) {
 ```
 
 ## Changelog
-### 1.1.0 - 2024-09-10
-* fix error in JS
-* add `beapi_accordion_block_config` filter to config accordion from third party plugins/theme
-
 ### 1.0.2 - 2024-07-08
 * fix composer php requirements
 
