@@ -1,0 +1,81 @@
+# Copyright (C) 2024 Be API Technical team
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Blockparty Accordion 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/blockparty-"
+"accordion\n"
+"POT-Creation-Date: 2024-04-02T21:06:56+00:00\n"
+"PO-Revision-Date: 2024-04-02 23:11+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Domain: blockparty-accordion\n"
+
+#. Plugin Name of the plugin
+#: blockparty-accordion.php
+msgid "Blockparty Accordion"
+msgstr "Blockparty Accordéon"
+
+#. Description of the plugin
+#: blockparty-accordion.php
+msgid "Accessible Accordion block for WordPress editor."
+msgstr "Bloc Accordéon Accessible pour l’éditeur de WordPress."
+
+#. Author of the plugin
+#: blockparty-accordion.php
+msgid "Be API Technical team"
+msgstr "Be API Technical team"
+
+#. Author URI of the plugin
+#: blockparty-accordion.php
+msgid "https://beapi.fr"
+msgstr "https://beapi.fr"
+
+#: build/blockparty-accordion-summary/index.js:1
+msgid "Summary…"
+msgstr "Titre…"
+
+#: build/blockparty-accordion-item/block.json
+msgctxt "block title"
+msgid "Item"
+msgstr "Élément"
+
+#: build/blockparty-accordion-item/block.json
+msgctxt "block description"
+msgid "Accessible accordion block item."
+msgstr "Bloc Accordéon Item Accessible."
+
+#: build/blockparty-accordion-panel/block.json
+msgctxt "block title"
+msgid "Panel"
+msgstr "Panneau"
+
+#: build/blockparty-accordion-panel/block.json
+msgctxt "block description"
+msgid "Accessible accordion block panel."
+msgstr "Bloc Accordéon Panneau Accessible."
+
+#: build/blockparty-accordion-summary/block.json
+msgctxt "block title"
+msgid "Summary"
+msgstr "Titre"
+
+#: build/blockparty-accordion-summary/block.json
+msgctxt "block description"
+msgid "Accessible accordion block summary."
+msgstr "Bloc Accordéon Titre Accessible."
+
+#: build/blockparty-accordion/block.json
+msgctxt "block title"
+msgid "Accordion"
+msgstr "Accordéon"
+
+#: build/blockparty-accordion/block.json
+msgctxt "block description"
+msgid "Accessible accordion block."
+msgstr "Bloc Accordéon Titre Accessible."
