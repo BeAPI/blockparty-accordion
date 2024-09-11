@@ -5,5 +5,5 @@ const accordionConfig = beapiAccordionBlock.accordionConfig;
 
 // Initialize beapi-accordion
 window.addEventListener('load', function () {
-	Accordion.init('.wp-block-blockparty-accordion', accordionConfig );
+	Accordion.init('.wp-block-blockparty-accordion', accordionConfig);
 });
