@@ -33,7 +33,6 @@ export default function Edit({ attributes, setAttributes }) {
 			acordionIconBlock = allowedAccordionIconBlock[0];
 		}
 	}
-
 	const hasIconBlock =
 		typeof getBlockType(acordionIconBlock) !== 'undefined' &&
 		acordionIconBlock;
@@ -59,11 +58,13 @@ export default function Edit({ attributes, setAttributes }) {
 					<InnerBlocks
 						allowedBlocks={allowedAccordionIconBlock}
 						__experimentalDirectInsert={false}
-						templateLock="all"
+						templateLock={false}
 						template={[
-							[acordionIconBlock, { width: 24, mini: true }],
+							[acordionIconBlock, { width: 24, maxIcons: 1 }],
 						]}
 						templateInsertUpdatesSelection={false}
+						directInsert={false}
+						renderAppender={false}
 					/>
 				)}
 				<RichText
