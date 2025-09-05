@@ -19,6 +19,9 @@ add_filter( 'beapi_accordion_block_config', function( $config ) {
 ```
 
 ## Changelog
+### 1.0.4 - 2025-09-05
+* fix icon inserter
+
 ### 1.0.3 - 2024-09-10
 * fix error in JS
 * add `beapi_accordion_block_config` filter to config accordion from third party plugins/theme

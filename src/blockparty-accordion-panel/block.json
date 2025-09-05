@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "blockparty/accordion-panel",
 	"parent": [ "blockparty/accordion-item" ],
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"title": "Panel",
 	"category": "widgets",
 	"icon": "text-page",
