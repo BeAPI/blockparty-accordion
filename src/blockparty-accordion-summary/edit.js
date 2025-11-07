@@ -8,7 +8,7 @@ import {
 import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { getBlockType } from '@wordpress/blocks';
 import { select } from '@wordpress/data';
-import iconIcon from './iconIcon';
+import { shapes } from '@beapi/icons';
 
 export default function Edit({ attributes, setAttributes }) {
 	const DEFAULT_TABS_ICON_BLOCK = ['beapi/icon-block'];
@@ -43,7 +43,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<BlockControls key="toolbar">
 				<ToolbarGroup>
 					<ToolbarButton
-						icon={iconIcon}
+						icon={shapes}
 						label={__('Icon', 'blockparty-accordion')}
 						className={hasIcon ? 'is-pressed' : ''}
 						isDisabled={!hasIconBlock}
