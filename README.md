@@ -1,3 +1,5 @@
+[![Be API Github Banner](.github/banner-github.png)](https://beapi.fr)
+
 # Blockparty Accordion
 
 ## Filters
