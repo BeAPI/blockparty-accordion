@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Blockparty Accordion 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/blockparty-"
 "accordion\n"
-"POT-Creation-Date: 2024-04-02T21:06:56+00:00\n"
-"PO-Revision-Date: 2024-04-02 23:11+0200\n"
+"POT-Creation-Date: 2025-11-07T15:31:42+00:00\n"
+"PO-Revision-Date: 2025-11-07 16:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 "X-Domain: blockparty-accordion\n"
 
 #. Plugin Name of the plugin
@@ -35,6 +35,10 @@ msgstr "Be API Technical team"
 #: blockparty-accordion.php
 msgid "https://beapi.fr"
 msgstr "https://beapi.fr"
+
+#: build/blockparty-accordion-summary/index.js:1
+msgid "Icon"
+msgstr "Icône"
 
 #: build/blockparty-accordion-summary/index.js:1
 msgid "Summary…"
