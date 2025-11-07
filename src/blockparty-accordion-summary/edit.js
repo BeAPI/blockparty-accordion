@@ -44,7 +44,7 @@ export default function Edit({ attributes, setAttributes }) {
 				<ToolbarGroup>
 					<ToolbarButton
 						icon={iconIcon}
-						label="Icon"
+						label={__('Icon', 'blockparty-accordion')}
 						className={hasIcon ? 'is-pressed' : ''}
 						isDisabled={!hasIconBlock}
 						onClick={() => {
