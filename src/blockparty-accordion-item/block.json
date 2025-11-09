@@ -6,7 +6,6 @@
 	"version": "1.0.5",
 	"title": "Item",
 	"category": "widgets",
-	"icon": "button",
 	"description": "Accessible accordion block item.",
 	"supports": {
 		"html": false,

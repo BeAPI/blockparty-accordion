@@ -6,7 +6,6 @@
 	"version": "1.0.5",
 	"title": "Panel",
 	"category": "widgets",
-	"icon": "text-page",
 	"description": "Accessible accordion block panel.",
 	"supports": {
 		"html": false,
