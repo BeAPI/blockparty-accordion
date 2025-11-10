@@ -3,10 +3,9 @@
 	"apiVersion": 2,
 	"name": "blockparty/accordion-summary",
 	"parent": [ "blockparty/accordion-item" ],
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"title": "Summary",
 	"category": "widgets",
-	"icon": "editor-textcolor",
 	"description": "Accessible accordion block summary.",
 	"supports": {
 		"html": false,

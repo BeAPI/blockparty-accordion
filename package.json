@@ -1,6 +1,6 @@
 {
 	"name": "blockparty-accordion",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Accessible Accordion block for WordPress",
 	"author": "Be API Technical team",
 	"license": "GPL-2.0-or-later",
@@ -28,6 +28,7 @@
 		"@beapi/icons": "^1.2.5",
 		"@wordpress/components": "^27.2.0",
 		"@wordpress/data": "^9.24.0",
+		"@wordpress/icons": "^11.1.0",
 		"@wp-now/wp-now": "^0.1.66",
 		"stylelint-config-recess-order": "^3.0.0",
 		"stylelint-scss": "^4.3.0",
