@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "blockparty/accordion-summary",
+  "parent": [
+    "blockparty/accordion-item"
+  ],
+  "version": "1.0.6",
+  "title": "Summary",
+  "category": "widgets",
+  "description": "Accessible accordion block summary.",
+  "supports": {
+    "html": false,
+    "anchor": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "lock": true,
+    "reusable": false,
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "hasIcon": {
+      "type": "boolean",
+      "value": false
+    }
+  },
+  "textdomain": "blockparty-accordion",
+  "editorScript": "file:./index.js"
+}
