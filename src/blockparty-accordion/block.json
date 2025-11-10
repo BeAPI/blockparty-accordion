@@ -2,10 +2,9 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "blockparty/accordion",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"title": "Accordion",
 	"category": "widgets",
-	"icon": "archive",
 	"description": "Accessible accordion block.",
 	"supports": {
 		"html": false,

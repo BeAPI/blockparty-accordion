@@ -3,10 +3,9 @@
 	"apiVersion": 2,
 	"name": "blockparty/accordion-item",
 	"parent": [ "blockparty/accordion" ],
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"title": "Item",
 	"category": "widgets",
-	"icon": "button",
 	"description": "Accessible accordion block item.",
 	"supports": {
 		"html": false,
