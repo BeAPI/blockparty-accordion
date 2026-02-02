@@ -8,27 +8,38 @@ yarn-error.log*
 # Coverage directory used by tools like istanbul
 coverage
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
-build/
-
-# Dependency directories
-node_modules/
-
 # Optional npm cache directory
 .npm
-!package-lock.json
 
 # Optional eslint cache
 .eslintcache
 
-# Output of `npm pack`
+# Output of 'npm pack'
 *.tgz
-
-# Output of `wp-scripts plugin-zip`
-*.zip
 
 # dotenv environment variables file
 .env
 
-/vendor/
+# Editors and OS
+.idea
+.DS_Store
+
+/.git
+/.github
+/src
+/node_modules
+
+/.distignore
+/.editorconfig
+/.eslintrc
+/.gitattributes
+/.gitignore
+/.plugin-data
+/.stylelintrc
+/composer.json
+/composer.lock
+/grumphp.yml
+/package.json
+/package-lock.json
+/phpcs.xml
+/psalm.xml
