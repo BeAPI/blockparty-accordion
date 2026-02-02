@@ -3,7 +3,7 @@
 	"apiVersion": 2,
 	"name": "blockparty/accordion-item",
 	"parent": [ "blockparty/accordion" ],
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"title": "Item",
 	"category": "widgets",
 	"description": "Accessible accordion block item.",
