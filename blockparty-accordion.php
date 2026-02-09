@@ -30,6 +30,7 @@ function init(): void {
 	register_block_type( __DIR__ . '/build/blockparty-accordion-panel' );
 
 	// Load translations for JS
+	wp_set_script_translations( 'blockparty-accordion-editor-script', 'blockparty-accordion', BLOCKPARTY_ACCORDION_DIR . '/languages' );
 	wp_set_script_translations( 'blockparty-accordion-summary-editor-script', 'blockparty-accordion', BLOCKPARTY_ACCORDION_DIR . '/languages' );
 
 	// Pass PHP values to main script
