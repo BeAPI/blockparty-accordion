@@ -70,5 +70,36 @@ function allow_aria_attributes( $tags, $context ) {
 	return $tags;
 }
 
+/**
+ * Set first accordion trigger to aria-expanded="true" when block has firstItemOpenByDefault.
+ *
+ * Done server-side for LCP: the BeAPI a11y JS library would set it on load, but that would cause a visible
+ * layout shift (first panel hidden then shown). Outputting the correct state in HTML
+ * avoids that shift. The summary block cannot know it is the first item, so it always
+ * outputs aria-expanded="false"; this filter corrects the first trigger only.
+ *
+ * @param string $block_content The block content.
+ * @param array  $block        The full block, including blockName and attrs.
+ * @return string Filtered block content.
+ */
+function render_accordion_first_item_expanded( $block_content, $block ) {
+	if ( ( $block['blockName'] ?? '' ) !== 'blockparty/accordion' ) {
+		return $block_content;
+	}
+	$first_open = $block['attrs']['firstItemOpenByDefault'] ?? false;
+	if ( ! $first_open ) {
+		return $block_content;
+	}
+	// Replace only the first occurrence (first trigger) so the first item is expanded.
+	$block_content = preg_replace(
+		'/aria-expanded="false"/',
+		'aria-expanded="true"',
+		$block_content,
+		1
+	);
+	return $block_content;
+}
+
 add_action( 'init', __NAMESPACE__ . '\\init' );
 add_filter( 'wp_kses_allowed_html', __NAMESPACE__ . '\\allow_aria_attributes', 10, 2 );
+add_filter( 'render_block', __NAMESPACE__ . '\\render_accordion_first_item_expanded', 10, 2 );
