@@ -32,7 +32,7 @@
         }
     }
 
-    &-panel {
+    &-item:where(:has([aria-expanded="false"])) &-panel {
         display: none;
     }
 
