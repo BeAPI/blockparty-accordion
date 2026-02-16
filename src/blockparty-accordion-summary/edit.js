@@ -11,31 +11,34 @@ import { select } from '@wordpress/data';
 import { shapes } from '@beapi/icons';
 
 export default function Edit({ attributes, setAttributes }) {
-	const DEFAULT_TABS_ICON_BLOCK = ['beapi/icon-block'];
+	const DEFAULT_TABS_ICON_BLOCK = ['beapi/icon-block', 'blockparty/icon'];
 	let allowedAccordionIconBlock = DEFAULT_TABS_ICON_BLOCK;
-	let acordionIconBlock = allowedAccordionIconBlock[0];
 	const hasSupport = select('core/blocks').hasBlockSupport(
 		'blockparty/accordion',
 		'AccordionIconBlock'
 	);
 	if (hasSupport) {
-		allowedAccordionIconBlock = select('core/blocks').getBlockSupport(
+		const supportBlocks = select('core/blocks').getBlockSupport(
 			'blockparty/accordion',
 			'AccordionIconBlock'
 		);
 		if (
-			!Array.isArray(allowedAccordionIconBlock) ||
-			typeof allowedAccordionIconBlock[0] === 'undefined'
+			!Array.isArray(supportBlocks) ||
+			typeof supportBlocks[0] === 'undefined'
 		) {
-			acordionIconBlock = false;
 			allowedAccordionIconBlock = [];
 		} else {
-			acordionIconBlock = allowedAccordionIconBlock[0];
+			allowedAccordionIconBlock = [
+				...new Set([...supportBlocks, ...DEFAULT_TABS_ICON_BLOCK]),
+			];
 		}
 	}
-	const hasIconBlock =
-		typeof getBlockType(acordionIconBlock) !== 'undefined' &&
-		acordionIconBlock;
+	// Ne garder que les blocs réellement enregistrés (actifs).
+	const registeredIconBlocks = allowedAccordionIconBlock.filter(
+		(blockName) => typeof getBlockType(blockName) !== 'undefined'
+	);
+	const hasIconBlock = registeredIconBlocks.length > 0;
+	const templateIconBlock = registeredIconBlocks[0];
 	const { hasIcon, label } = attributes;
 
 	return (
@@ -56,11 +59,11 @@ export default function Edit({ attributes, setAttributes }) {
 			<h3 {...useBlockProps()}>
 				{hasIcon && hasIconBlock && (
 					<InnerBlocks
-						allowedBlocks={allowedAccordionIconBlock}
+						allowedBlocks={registeredIconBlocks}
 						__experimentalDirectInsert={false}
 						templateLock={false}
 						template={[
-							[acordionIconBlock, { width: 24, maxIcons: 1 }],
+							[templateIconBlock, { width: 24, maxIcons: 1 }],
 						]}
 						templateInsertUpdatesSelection={false}
 						directInsert={false}
