@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "blockparty/accordion",
+  "version": "1.1.0",
+  "title": "Accordion",
+  "category": "widgets",
+  "description": "Accessible accordion block.",
+  "attributes": {
+    "firstItemOpenByDefault": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "textdomain": "blockparty-accordion",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./script.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
