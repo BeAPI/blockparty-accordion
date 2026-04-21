@@ -33,7 +33,7 @@
 		"@beapi/icons": "^1.2.6",
 		"@wordpress/components": "^27.2.0",
 		"@wordpress/data": "^9.24.0",
-		"@wordpress/icons": "^11.6.0",
+		"@wordpress/icons": "12.2.0",
 		"@wp-now/wp-now": "^0.1.66",
 		"stylelint-config-recess-order": "^3.0.0",
 		"stylelint-scss": "^4.3.0"
