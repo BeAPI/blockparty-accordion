@@ -2,6 +2,8 @@
 
 # Blockparty Accordion
 
+[![Test with WordPress Playground](https://img.shields.io/badge/Test%20with-WordPress%20Playground-0073aa?style=for-the-badge&logo=wordpress&logoColor=white)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/beapi/blockparty-accordion/refs/heads/main/.wordpress-org/blueprints/blueprint.json)
+
 ## Filters
 
 Use `beapi_accordion_block_config` filter to override accordion config from your theme or plugin.
