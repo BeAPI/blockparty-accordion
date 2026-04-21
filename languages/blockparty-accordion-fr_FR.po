@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Blockparty Accordion 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/blockparty-"
 "accordion\n"
-"POT-Creation-Date: 2026-02-09T09:49:54+00:00\n"
-"PO-Revision-Date: 2026-02-09 10:51+0100\n"
+"POT-Creation-Date: 2026-04-21T17:06:51+00:00\n"
+"PO-Revision-Date: 2026-04-21 19:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.8\n"
 "X-Domain: blockparty-accordion\n"
 
 #. Plugin Name of the plugin
@@ -59,8 +59,8 @@ msgstr "Élément"
 
 #: build/blockparty-accordion-item/block.json
 msgctxt "block description"
-msgid "Accessible accordion block item."
-msgstr "Bloc Accordéon Item Accessible."
+msgid "Element of the accordion block."
+msgstr "Élément du bloc accordéon."
 
 #: build/blockparty-accordion-panel/block.json
 msgctxt "block title"
@@ -69,8 +69,8 @@ msgstr "Panneau"
 
 #: build/blockparty-accordion-panel/block.json
 msgctxt "block description"
-msgid "Accessible accordion block panel."
-msgstr "Bloc Accordéon Panneau Accessible."
+msgid "Contains the hidden or revealed content of the accordion item."
+msgstr "Contient le contenu affiché ou masqué de l’élément d’accordéon."
 
 #: build/blockparty-accordion-summary/block.json
 msgctxt "block title"
@@ -79,8 +79,8 @@ msgstr "Titre"
 
 #: build/blockparty-accordion-summary/block.json
 msgctxt "block description"
-msgid "Accessible accordion block summary."
-msgstr "Bloc Accordéon Titre Accessible."
+msgid "Title of the accordion item."
+msgstr "Titre de l’élément d’accordéon."
 
 #: build/blockparty-accordion/block.json
 msgctxt "block title"
@@ -89,5 +89,13 @@ msgstr "Accordéon"
 
 #: build/blockparty-accordion/block.json
 msgctxt "block description"
-msgid "Accessible accordion block."
-msgstr "Bloc Accordéon Titre Accessible."
+msgid "Display a list of elements that can be expanded and collapsed."
+msgstr "Affiche une liste d’éléments qui peuvent être dépliés et repliés."
+
+#~ msgctxt "block description"
+#~ msgid "Accessible accordion block panel."
+#~ msgstr "Bloc Accordéon Panneau Accessible."
+
+#~ msgctxt "block description"
+#~ msgid "Accessible accordion block summary."
+#~ msgstr "Bloc Accordéon Titre Accessible."

@@ -5,7 +5,7 @@
 	"version": "1.1.0",
 	"title": "Accordion",
 	"category": "widgets",
-	"description": "Accessible accordion block.",
+	"description": "Display a list of elements that can be expanded and collapsed.",
 	"attributes": {
 		"firstItemOpenByDefault": {
 			"type": "boolean",
