@@ -2,7 +2,7 @@
 Contributors:      Be API Technical team
 Tags:              block
 Tested up to:      6.0
-Stable tag:        1.1.0
+Stable tag:        1.2.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,13 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 1.2.0 =
+
+* Clarify block inserter descriptions and refresh French translations
+* Add WordPress Playground blueprint and README badge for wordpress.org
+* Update block icons (`@beapi/icons`, `@wordpress/icons`) and related scripts
+* Developer: Volta Node pin, TypeScript ESLint packages for ESLint, JS workflow triggers on `package.json` changes
 
 = 1.1.0 =
 

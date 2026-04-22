@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.2.0 - 2026-04-21
+
+- Clarify block inserter descriptions; refresh French translations (POT, PO, MO, and Jed JSON)
+- Add WordPress Playground blueprint and README badge for the plugin directory
+- Update block icons (`@beapi/icons`, `@wordpress/icons`) and block entry scripts
+- Developer tooling: Volta Node pin; add `@typescript-eslint` packages for ESLint; run JS quality workflow when `package.json` changes
+
 ## 1.1.0 - 2026-02-18
 
 - Support for `blockparty/icons` block
