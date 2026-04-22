@@ -2,15 +2,20 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "blockparty/accordion-panel",
-	"parent": ["blockparty/accordion-item"],
-	"version": "1.1.0",
+	"parent": [
+		"blockparty/accordion-item"
+	],
+	"version": "1.2.0",
 	"title": "Panel",
 	"category": "widgets",
-	"description": "Accessible accordion block panel.",
+	"description": "Contains the hidden or revealed content of the accordion item.",
 	"supports": {
 		"html": false,
 		"anchor": false,
-		"align": ["wide", "full"],
+		"align": [
+			"wide",
+			"full"
+		],
 		"reusable": false,
 		"color": {
 			"background": true,
