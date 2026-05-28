@@ -24,6 +24,60 @@
 			"text": true
 		}
 	},
+	"example": {
+		"attributes": {
+			"firstItemOpenByDefault": true
+		},
+		"innerBlocks": [
+			{
+				"name": "blockparty/accordion-item",
+				"attributes": {
+					"openByDefault": true
+				},
+				"innerBlocks": [
+					{
+						"name": "blockparty/accordion-summary",
+						"attributes": {
+							"label": "Lorem ipsum"
+						}
+					},
+					{
+						"name": "blockparty/accordion-panel",
+						"innerBlocks": [
+							{
+								"name": "core/paragraph",
+								"attributes": {
+									"content": "Lorem ipsum"
+								}
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "blockparty/accordion-item",
+				"innerBlocks": [
+					{
+						"name": "blockparty/accordion-summary",
+						"attributes": {
+							"label": "Lorem ipsum"
+						}
+					},
+					{
+						"name": "blockparty/accordion-panel",
+						"innerBlocks": [
+							{
+								"name": "core/paragraph",
+								"attributes": {
+									"content": "Lorem ipsum"
+								}
+							}
+						]
+					}
+				]
+			}
+		]
+	},
 	"textdomain": "blockparty-accordion",
 	"editorScript": "file:./index.js",
 	"viewScript": "file:./script.js",
