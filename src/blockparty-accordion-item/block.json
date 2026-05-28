@@ -5,7 +5,7 @@
 	"parent": [
 		"blockparty/accordion"
 	],
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"title": "Item",
 	"category": "widgets",
 	"description": "Element of the accordion block.",
