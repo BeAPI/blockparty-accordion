@@ -75,7 +75,6 @@ add_filter( 'beapi_accordion_block_config', function ( $config ) {
 		'closedDefault'  => true,
 		'forceExpand'   => false,
 		'hasAnimation'  => true,
-		'openMultiple'  => false,
 	];
 
 	return $config;

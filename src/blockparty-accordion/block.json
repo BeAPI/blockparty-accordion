@@ -15,6 +15,10 @@
 			"type": "number",
 			"default": 3,
 			"enum": [2, 3, 4, 5, 6]
+		},
+		"allowMultiple": {
+			"type": "boolean",
+			"default": true
 		}
 	},
 	"providesContext": {

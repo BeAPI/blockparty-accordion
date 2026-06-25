@@ -12,6 +12,9 @@ window.addEventListener('load', function () {
 		if (el.dataset.firstItemOpenByDefault === 'true') {
 			config.closedDefault = false;
 		}
+		if (el.dataset.allowMultiple !== undefined) {
+			config.allowMultiple = el.dataset.allowMultiple === 'true';
+		}
 		Accordion.init(el, config);
 	});
 });
