@@ -173,12 +173,7 @@ This project is released under the **GPL-2.0-or-later** license. See [LICENSE](L
 
 ## Changelog
 
-See [readme.txt](readme.txt) and [CHANGELOG.md](CHANGELOG.md) for the full version history. Recent highlights:
-
-- **1.2.0** — Clearer inserter copy; French and asset refresh; WordPress Playground blueprint; icon package updates; developer tooling and workflow tweaks.
-- **1.1.0** — Support for `blockparty/icons`; accordion item icon update; translation fixes.
-- **1.0.8** — Option to open the first item by default.
-- **1.0.0** — Initial release.
+See [readme.txt](readme.txt) and [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ---
 

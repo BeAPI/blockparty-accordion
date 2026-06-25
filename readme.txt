@@ -2,7 +2,7 @@
 Contributors:      Be API Technical team
 Tags:              block
 Tested up to:      6.0
-Stable tag:        1.2.0
+Stable tag:        1.3.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,16 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 1.3.0 =
+
+* Add configurable summary heading level (h2–h6) on the parent Accordion block
+* Add per-block auto-close setting to control whether multiple panels can stay open
+* Fix `allowMultiple` block setting not overriding the global `beapi_accordion_block_config` filter when auto-close is disabled
+* Add deprecated block migration for accordions saved before `data-allow-multiple` was always serialized
+* Update `@beapi/be-a11y` to v2 and rename the frontend script entry to `view.js`
+* Fix CSS custom property typos in accordion styles
+* Refresh French translations for new editor strings
 
 = 1.2.0 =
 
