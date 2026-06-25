@@ -2,9 +2,9 @@
 .wp-block-blockparty-accordion {
     --wp--blockparty--accordion--border: 1px solid #000;
     --wp--blockparty--accordion--font-size: var(--wp--preset--font-size--h-3);
-    --wp--blockparty--accordion--font-weigt: 400;
+    --wp--blockparty--accordion--font-weight: 400;
     --wp--blockparty--accordion--padding: 1rem 0;
-    --wp--blockparty--accordion--padding-wiht-background: 1rem;
+    --wp--blockparty--accordion--padding-with-background: 1rem;
     --wp--blockparty--accordion--icon-size: 24px;
 
     $block: &;
@@ -48,7 +48,7 @@
         width: 100%;
         padding: 0;
         font-size: var(--wp--blockparty--accordion--font-size);
-        font-weight: var(--wp--blockparty--accordion--font-weigt);
+        font-weight: var(--wp--blockparty--accordion--font-weight);
         text-align: left;
         background-color: transparent;
         border: 0;
