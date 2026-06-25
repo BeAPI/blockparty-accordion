@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.3.0 - 2026-06-25
+
+- Add configurable summary heading level (h2–h6) on the parent Accordion block
+- Add per-block auto-close setting to control whether multiple panels can stay open
+- Fix `allowMultiple` block setting not overriding the global `beapi_accordion_block_config` filter when auto-close is disabled
+- Add deprecated block migration for accordions saved before `data-allow-multiple` was always serialized
+- Update `@beapi/be-a11y` to v2 and rename the frontend script entry to `view.js`
+- Fix CSS custom property typos in accordion styles (`font-weight`, `padding-with-background`)
+- Refresh French translations for new editor strings
+
 ## 1.2.0 - 2026-04-21
 
 - Clarify block inserter descriptions; refresh French translations (POT, PO, MO, and Jed JSON)
