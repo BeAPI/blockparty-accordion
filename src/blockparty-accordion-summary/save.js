@@ -1,10 +1,11 @@
 import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-	const { hasIcon, label } = attributes;
+	const { hasIcon, label, headingLevel = 3 } = attributes;
+	const HeadingTag = `h${headingLevel}`;
 
 	return (
-		<h3 {...useBlockProps.save()}>
+		<HeadingTag {...useBlockProps.save()}>
 			<button
 				aria-expanded="false"
 				className="wp-block-blockparty-accordion-trigger"
@@ -16,6 +17,6 @@ export default function save({ attributes }) {
 					value={label}
 				/>
 			</button>
-		</h3>
+		</HeadingTag>
 	);
 }
