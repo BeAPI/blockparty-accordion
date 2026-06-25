@@ -42,7 +42,6 @@ function init(): void {
 				'closedDefault'   => true,
 				'forceExpand'     => false,
 				'hasAnimation'    => true,
-				'openMultiple'    => false,
 				'panelSelector'   => '.wp-block-blockparty-accordion-panel',
 				'prefixId'        => 'block-accordion',
 				'triggerSelector' => '.wp-block-blockparty-accordion-trigger',

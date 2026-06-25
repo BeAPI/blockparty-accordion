@@ -10,7 +10,7 @@ import { getBlockType } from '@wordpress/blocks';
 import { select } from '@wordpress/data';
 import { shapes } from '@beapi/icons';
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, context = {} }) {
 	const DEFAULT_TABS_ICON_BLOCK = ['beapi/icon-block', 'blockparty/icon'];
 	let allowedAccordionIconBlock = DEFAULT_TABS_ICON_BLOCK;
 	const hasSupport = select('core/blocks').hasBlockSupport(
@@ -39,7 +39,10 @@ export default function Edit({ attributes, setAttributes }) {
 	);
 	const hasIconBlock = registeredIconBlocks.length > 0;
 	const templateIconBlock = registeredIconBlocks[0];
-	const { hasIcon, label } = attributes;
+	const { hasIcon, label, headingLevel: savedHeadingLevel } = attributes;
+	const headingLevel =
+		context['blockparty/headingLevel'] ?? savedHeadingLevel ?? 3;
+	const HeadingTag = `h${headingLevel}`;
 
 	return (
 		<>
@@ -56,7 +59,7 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</ToolbarGroup>
 			</BlockControls>
-			<h3 {...useBlockProps()}>
+			<HeadingTag {...useBlockProps()}>
 				{hasIcon && hasIconBlock && (
 					<InnerBlocks
 						allowedBlocks={registeredIconBlocks}
@@ -80,7 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
 						setAttributes({ label: content });
 					}}
 				/>
-			</h3>
+			</HeadingTag>
 		</>
 	);
 }

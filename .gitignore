@@ -32,3 +32,9 @@ node_modules/
 .env
 
 /vendor/
+
+# WP Env
+.wp-env/plugins/
+
+# Composer
+composer.lock

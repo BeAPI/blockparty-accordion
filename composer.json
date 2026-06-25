@@ -2,7 +2,14 @@
 	"name": "beapi/blockparty-accordion",
 	"type": "wordpress-plugin",
 	"description": "Accessible Accordion block for WordPress editor.",
-	"keywords": ["wordpress", "plugin", "gutenberg", "block", "share", "multisite"],
+	"keywords": [
+		"wordpress",
+		"plugin",
+		"gutenberg",
+		"block",
+		"share",
+		"multisite"
+	],
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
@@ -37,17 +44,14 @@
 		"phpro/grumphp-shim": "^1.5",
 		"roave/security-advisories": "dev-latest",
 		"roots/wordpress-no-content": "^6.4",
-		"vimeo/psalm": "^5.20",
 		"wp-coding-standards/wpcs": "^3.0"
 	},
 	"scripts": {
 		"cs": "./vendor/bin/phpcs",
-		"cb": "./vendor/bin/phpcbf",
-		"psalm": "./vendor/bin/psalm"
+		"cb": "./vendor/bin/phpcbf"
 	},
 	"scripts-descriptions": {
 		"cs": "Run PHP CodeSniffer on codebase using custom ruleset.",
-		"cb": "Run PHP Code Beautifier and Fixer on codebase using custom ruleset.",
-		"psalm": "Run psalm on codebase using custom ruleset."
+		"cb": "Run PHP Code Beautifier and Fixer on codebase using custom ruleset."
 	}
 }

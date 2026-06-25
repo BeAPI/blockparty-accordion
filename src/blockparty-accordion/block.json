@@ -10,15 +10,24 @@
 		"firstItemOpenByDefault": {
 			"type": "boolean",
 			"default": false
+		},
+		"headingLevel": {
+			"type": "number",
+			"default": 3,
+			"enum": [2, 3, 4, 5, 6]
+		},
+		"allowMultiple": {
+			"type": "boolean",
+			"default": true
 		}
+	},
+	"providesContext": {
+		"blockparty/headingLevel": "headingLevel"
 	},
 	"supports": {
 		"html": false,
 		"anchor": true,
-		"align": [
-			"wide",
-			"full"
-		],
+		"align": ["wide", "full"],
 		"color": {
 			"background": true,
 			"text": true
@@ -80,7 +89,7 @@
 	},
 	"textdomain": "blockparty-accordion",
 	"editorScript": "file:./index.js",
-	"viewScript": "file:./script.js",
+	"viewScript": "file:./view.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css"
 }
