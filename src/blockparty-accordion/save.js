@@ -6,7 +6,7 @@ export default function save({ attributes }) {
 		'data-first-item-open-by-default': firstItemOpenByDefault
 			? 'true'
 			: undefined,
-		'data-allow-multiple': allowMultiple ? undefined : 'false',
+		'data-allow-multiple': allowMultiple ? 'true' : 'false',
 	});
 	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
 	return <div {...innerBlocksProps} />;
