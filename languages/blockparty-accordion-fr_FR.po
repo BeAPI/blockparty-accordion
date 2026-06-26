@@ -6,7 +6,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/blockparty-"
 "accordion\n"
 "POT-Creation-Date: 2026-06-25T09:29:58+00:00\n"
-"PO-Revision-Date: 2026-06-25 11:31+0200\n"
+"PO-Revision-Date: 2026-06-26 09:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -74,7 +74,7 @@ msgid ""
 "The first item will be opened by default when the page loads if this option "
 "is enabled."
 msgstr ""
-"La première entrée sera ouvert par défaut au chargement de la page si c’est "
+"La première entrée sera ouverte par défaut au chargement de la page si cette "
 "option est activé."
 
 #: build/blockparty-accordion/index.js:2
@@ -84,7 +84,7 @@ msgstr "Fermeture automatique"
 #: build/blockparty-accordion/index.js:2
 msgid "When enabled, opening a panel closes any other open panel."
 msgstr ""
-"Si c’est activé, les panneaux seront automatiquement fermées si un autre "
+"Si c’est activé, les panneaux seront automatiquement fermés si un autre "
 "panneau est ouvert."
 
 #: build/blockparty-accordion-item/block.json
