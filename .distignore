@@ -27,6 +27,7 @@ coverage
 /.git
 /.github
 /src
+/scripts
 /node_modules
 
 /.distignore
