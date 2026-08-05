@@ -3,7 +3,7 @@
 # Bump the plugin version across project metadata, blocks, and docs.
 #
 # Usage (no chmod required):
-#   bash scripts/bump.sh 1.4.0
+#   bash bin/bump.sh 1.4.0
 #   npm run bump -- 1.4.0
 #
 # macOS sed (-i '') is assumed.
@@ -65,8 +65,8 @@ replace_json_version() {
 # ---------------------------------------------------------------------------
 
 if [[ -z "${1:-}" || "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
-	echo "Usage: bash scripts/bump.sh <version>"
-	echo "Example: bash scripts/bump.sh 1.4.0"
+	echo "Usage: bash bin/bump.sh <version>"
+	echo "Example: bash bin/bump.sh 1.4.0"
 	exit "$([[ -n "${1:-}" ]] && echo 0 || echo 1)"
 fi
 
