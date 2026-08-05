@@ -1,6 +1,6 @@
 {
 	"name": "blockparty-accordion",
-	"version": "1.3.1",
+	"version": "1.3.2",
 	"description": "Accessible Accordion block for WordPress",
 	"author": "Be API Technical team",
 	"license": "GPL-2.0-or-later",
@@ -16,7 +16,8 @@
 		"make-pot": "wp i18n make-pot . languages/blockparty-accordion.pot --slug=blockparty-accordion --domain=blockparty-accordion --exclude=node_modules,src",
 		"make-json": "wp i18n make-json languages/ --no-purge",
 		"env:start": "wp-env start",
-		"env:stop": "wp-env stop"
+		"env:stop": "wp-env stop",
+		"bump": "bash bin/bump.sh"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
