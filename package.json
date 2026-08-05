@@ -17,7 +17,7 @@
 		"make-json": "wp i18n make-json languages/ --no-purge",
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop",
-		"bump": "node scripts/bump-version.js"
+		"bump": "bash bin/bump.sh"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
