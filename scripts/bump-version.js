@@ -25,6 +25,7 @@ const FILES = {
 	changelog: 'CHANGELOG.md',
 	readmeMd: 'README.md',
 	readmeTxt: 'readme.txt',
+	blueprint: '.wordpress-org/blueprints/blueprint.json',
 	blockJson: [
 		'src/blockparty-accordion/block.json',
 		'src/blockparty-accordion-item/block.json',
@@ -241,6 +242,27 @@ function bumpReadmeTxt( newVersion ) {
 }
 
 /**
+ * Update the Playground blueprint git tag ref.
+ *
+ * @param {string} newVersion New version.
+ * @return {void}
+ */
+function bumpBlueprint( newVersion ) {
+	const relativePath = FILES.blueprint;
+	const contents = read( relativePath );
+	const updated = contents.replace(
+		/("ref"\s*:\s*")[^"]+(")/,
+		`$1${ newVersion }$2`
+	);
+
+	if ( updated === contents ) {
+		throw new Error( `Could not find a "ref" field in ${ relativePath }.` );
+	}
+
+	write( relativePath, updated );
+}
+
+/**
  * Replace occurrences of the old version in README.md when present.
  *
  * @param {string} oldVersion Previous version.
@@ -324,6 +346,9 @@ function main() {
 
 	bumpReadmeTxt( next );
 	console.log( `  updated ${ FILES.readmeTxt }` );
+
+	bumpBlueprint( next );
+	console.log( `  updated ${ FILES.blueprint }` );
 
 	bumpReadmeMd( current, next );
 
