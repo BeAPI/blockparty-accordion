@@ -54,6 +54,93 @@ function init(): void {
 }
 
 /**
+ * Default icon blocks allowed inside accordion summaries.
+ *
+ * `core/icon` ships in WordPress 7.0+. Legacy Blockparty / BeAPI icon blocks
+ * remain in the default list so icons keep working on the required 6.2+ range
+ * whenever those plugins are active. The editor keeps only registered names.
+ */
+const BLOCKPARTY_ACCORDION_DEFAULT_ICON_BLOCKS = [
+	'core/icon',
+	'blockparty/icon',
+	'beapi/icon-block',
+];
+
+/**
+ * Returns the icon block names allowed inside accordion summaries.
+ *
+ * @return string[] Block names (e.g. `core/icon`).
+ */
+function get_allowed_icon_blocks(): array {
+	/**
+	 * Filters the icon block types allowed inside accordion summaries.
+	 *
+	 * Defaults prefer `core/icon` (WordPress 7.0+) and include
+	 * `blockparty/icon` / `beapi/icon-block` for older installs. Example —
+	 * allow only the native icon block:
+	 *
+	 *     add_filter(
+	 *         'blockparty_accordion_allowed_icon_blocks',
+	 *         static function (): array {
+	 *             return [ 'core/icon' ];
+	 *         }
+	 *     );
+	 *
+	 * The first registered block in the list is used as the InnerBlocks
+	 * template when enabling an icon on a summary.
+	 *
+	 * @param string[] $blocks Allowed block names.
+	 */
+	$blocks = apply_filters(
+		'blockparty_accordion_allowed_icon_blocks',
+		BLOCKPARTY_ACCORDION_DEFAULT_ICON_BLOCKS
+	);
+
+	if ( ! is_array( $blocks ) ) {
+		return BLOCKPARTY_ACCORDION_DEFAULT_ICON_BLOCKS;
+	}
+
+	$sanitized = [];
+	foreach ( $blocks as $block ) {
+		if ( ! is_string( $block ) ) {
+			continue;
+		}
+
+		$block = strtolower( trim( $block ) );
+		if ( ! preg_match( '/^[a-z0-9-]+\/[a-z0-9-]+$/', $block ) ) {
+			continue;
+		}
+
+		$sanitized[] = $block;
+	}
+
+	$sanitized = array_values( array_unique( $sanitized ) );
+
+	return [] === $sanitized ? BLOCKPARTY_ACCORDION_DEFAULT_ICON_BLOCKS : $sanitized;
+}
+
+/**
+ * Passes editor settings (allowed icon blocks) to the summary script.
+ */
+function enqueue_editor_settings(): void {
+	$handle = generate_block_asset_handle( 'blockparty/accordion-summary', 'editorScript' );
+
+	if ( ! wp_script_is( $handle, 'registered' ) ) {
+		return;
+	}
+
+	$settings = [
+		'allowedIconBlocks' => get_allowed_icon_blocks(),
+	];
+
+	wp_add_inline_script(
+		$handle,
+		'window.blockpartyAccordionSettings = ' . wp_json_encode( $settings ) . ';',
+		'before'
+	);
+}
+
+/**
  * Include additional aria attributes in KSES.
  *
  * @param array $tags
@@ -101,5 +188,6 @@ function render_accordion_first_item_expanded( $block_content, $block ) {
 }
 
 add_action( 'init', __NAMESPACE__ . '\\init' );
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_settings' );
 add_filter( 'wp_kses_allowed_html', __NAMESPACE__ . '\\allow_aria_attributes', 10, 2 );
 add_filter( 'render_block', __NAMESPACE__ . '\\render_accordion_first_item_expanded', 10, 2 );
