@@ -1,7 +1,7 @@
 /.git export-ignore
 /.github export-ignore
 /.wordpress-org export-ignore
-/src/ export-ignore -diff
+/src export-ignore
 /vendor/ export-ignore -diff
 /node_modules export-ignore
 /tests export-ignore
