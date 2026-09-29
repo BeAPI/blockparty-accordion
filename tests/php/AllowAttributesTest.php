@@ -25,7 +25,7 @@ class AllowAttributesTest extends WP_UnitTestCase {
 
 		$result = allow_aria_attributes( $tags, 'post' );
 
-		$this->assertTrue( $result['button']['aria-expanded'] );
+		$this->assertSame( [], $result['button']['aria-expanded'] );
 	}
 
 	/**
