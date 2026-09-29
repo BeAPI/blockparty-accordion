@@ -1,6 +1,5 @@
 /* editor */
 .wp-block-blockparty-accordion {
-
     &-item,
     &-panel,
     .wp-block {
@@ -26,6 +25,7 @@
     }
 
     &-summary {
+        gap: var(--wp--blockparty--accordion-trigger--gap);
 
         .components-placeholder.components-placeholder {
             min-height: 24px;
