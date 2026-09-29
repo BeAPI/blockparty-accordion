@@ -18,10 +18,9 @@
         border-bottom: var(--wp--blockparty--accordion--border);
 
         .wp-block-blockparty-icon,
-        .wp-block-beapi-icon-block {
-            margin-top: 0;
-            margin-right: 8px;
-            margin-bottom: 0;
+        .wp-block-beapi-icon-block,
+        .wp-block-icon {
+            margin: 0;
 
             .icon-container {
                 display: flex;
