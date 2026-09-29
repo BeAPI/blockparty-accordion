@@ -1,46 +1,29 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Coverage directory used by tools like istanbul
-coverage
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Output of 'npm pack'
-*.tgz
-
-# dotenv environment variables file
-.env
-
-# Editors and OS
-.idea
-.DS_Store
-
 /.git
 /.github
-/src
-/bin
+/.wordpress-org
 /node_modules
+/src
+/tests
 
-/.distignore
-/.editorconfig
-/.eslintrc
-/.gitattributes
-/.gitignore
-/.plugin-data
-/.stylelintrc
-/composer.json
-/composer.lock
-/grumphp.yml
-/package.json
-/package-lock.json
-/phpcs.xml
-/psalm.xml
+.distignore
+.editorconfig
+.eslintrc
+.gitattributes
+.gitignore
+.plugin-data
+.stylelintrc
+.wp-env.json
+.wp-env.test.json
+CHANGELOG.md
+composer.json
+composer.lock
+eslint.config.cjs
+grumphp.yml
+LICENSE.md
+package.json
+package-lock.json
+phpcs.xml
+phpunit.xml.dist
+README.md
+webpack.config.js
+yarn.lock
