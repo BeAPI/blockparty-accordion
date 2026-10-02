@@ -34,12 +34,13 @@ test.describe( 'Blockparty Accordion editor', () => {
 		editor,
 		page,
 	} ) => {
-		const isBlockRegistered = await page.evaluate(
-			() => !! window.wp?.blocks?.getBlockType( 'blockparty/accordion' )
-		);
-		test.skip(
-			! isBlockRegistered,
-			'blockparty/accordion is not registered in the editor (block scripts may be unavailable on this WordPress version).'
+		await page.waitForFunction(
+			() =>
+				typeof window.wp?.blocks?.getBlockType(
+					'blockparty/accordion'
+				) !== 'undefined',
+			undefined,
+			{ timeout: 30_000 }
 		);
 
 		await editor.insertBlock( { name: 'blockparty/accordion' } );
