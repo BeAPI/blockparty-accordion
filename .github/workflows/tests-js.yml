@@ -10,6 +10,7 @@ on: # yamllint disable-line rule:truthy
       - 'tests/js/**'
       - 'package.json'
       - 'package-lock.json'
+      - 'webpack.config.js'
       - '.github/workflows/tests-js.yml'
   push:
     branches:
@@ -19,6 +20,7 @@ on: # yamllint disable-line rule:truthy
       - 'tests/js/**'
       - 'package.json'
       - 'package-lock.json'
+      - 'webpack.config.js'
       - '.github/workflows/tests-js.yml'
 
 concurrency:

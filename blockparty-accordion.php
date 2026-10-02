@@ -20,31 +20,9 @@ define( 'BLOCKPARTY_ACCORDION_URL', plugin_dir_url( __FILE__ ) );
 define( 'BLOCKPARTY_ACCORDION_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BLOCKPARTY_ACCORDION_PLUGIN_DIRNAME', plugin_basename( __FILE__ ) );
 
-/**
- * Registers a `react-jsx-runtime` script when core does not (WordPress < 6.6).
- *
- * Built block scripts from `@wordpress/scripts` 30+ declare that handle as a
- * dependency; without it, editor scripts never load on older core versions.
- */
-function register_react_jsx_runtime_compat(): void {
-	if ( wp_script_is( 'react-jsx-runtime', 'registered' ) ) {
-		return;
-	}
-
-	wp_register_script(
-		'react-jsx-runtime',
-		BLOCKPARTY_ACCORDION_URL . 'assets/compat/react-jsx-runtime.js',
-		[ 'wp-element' ],
-		BLOCKPARTY_ACCORDION_VERSION,
-		true
-	);
-}
-
 function init(): void {
 	// Load available translations.
 	load_plugin_textdomain( 'blockparty-accordion', false, dirname( BLOCKPARTY_ACCORDION_PLUGIN_DIRNAME ) . '/languages' );
-
-	register_react_jsx_runtime_compat();
 
 	register_block_type( __DIR__ . '/build/blockparty-accordion' );
 	register_block_type( __DIR__ . '/build/blockparty-accordion-item' );
@@ -209,6 +187,33 @@ function render_accordion_first_item_expanded( $block_content, $block ) {
 	return $block_content;
 }
 
+/**
+ * Polyfill the `react-jsx-runtime` script for WordPress versions before 6.6.
+ *
+ * Built editor assets from modern `@wordpress/scripts` depend on this handle.
+ * Without it, block editor scripts do not load and blocks never register in JS.
+ *
+ * @param \WP_Scripts $scripts WP_Scripts instance.
+ */
+function register_react_jsx_runtime( $scripts ): void {
+	if ( isset( $scripts->registered['react-jsx-runtime'] ) ) {
+		return;
+	}
+
+	$asset = BLOCKPARTY_ACCORDION_DIR . 'build/react-jsx-runtime.js';
+	if ( ! is_readable( $asset ) ) {
+		return;
+	}
+
+	$scripts->add(
+		'react-jsx-runtime',
+		BLOCKPARTY_ACCORDION_URL . 'build/react-jsx-runtime.js',
+		[ 'react' ],
+		BLOCKPARTY_ACCORDION_VERSION
+	);
+}
+
+add_action( 'wp_default_scripts', __NAMESPACE__ . '\\register_react_jsx_runtime' );
 add_action( 'init', __NAMESPACE__ . '\\init' );
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_settings' );
 add_filter( 'wp_kses_allowed_html', __NAMESPACE__ . '\\allow_aria_attributes', 10, 2 );
