@@ -1,20 +1,20 @@
 import { useBlockProps, InnerBlocks, RichText } from '@wordpress/block-editor';
 
-export default function save({ attributes }) {
+export default function save( { attributes } ) {
 	const { hasIcon, label, headingLevel = 3 } = attributes;
-	const HeadingTag = `h${headingLevel}`;
+	const HeadingTag = `h${ headingLevel }`;
 
 	return (
-		<HeadingTag {...useBlockProps.save()}>
+		<HeadingTag { ...useBlockProps.save() }>
 			<button
 				aria-expanded="false"
 				className="wp-block-blockparty-accordion-trigger"
 			>
-				{hasIcon && <InnerBlocks.Content />}
+				{ hasIcon && <InnerBlocks.Content /> }
 				<RichText.Content
 					tagName="span"
-					className={'wp-block-blockparty-accordion-title'}
-					value={label}
+					className={ 'wp-block-blockparty-accordion-title' }
+					value={ label }
 				/>
 			</button>
 		</HeadingTag>

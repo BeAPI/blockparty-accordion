@@ -136,8 +136,35 @@ npm run lint:js
 npm run lint:css
 npm run format
 npm run plugin-zip
-npm run start:env   # @wordpress/env
-npm run stop:env
+npm run env:start   # @wordpress/env (dev, port 8888)
+npm run env:stop
+```
+
+### Testing
+
+PHP integration tests run inside an isolated wp-env instance (port `8889`):
+
+```bash
+composer install
+npm install
+npm run build
+npm run env:start-tests
+npm run test:php
+npm run env:stop-tests
+```
+
+JavaScript unit tests (Jest via `@wordpress/scripts`):
+
+```bash
+npm run test:unit:js
+```
+
+End-to-end tests (Playwright — editor insertion + frontend accordion behavior):
+
+```bash
+npx playwright install chromium
+npm run build
+npm run test:e2e
 ```
 
 ### i18n (optional)

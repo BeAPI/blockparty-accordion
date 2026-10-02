@@ -20,8 +20,8 @@ export const BLOCKPARTY_ACCORDION_DEFAULT_ICON_BLOCKS = [
  * @param {string} blockName Icon block name.
  * @return {Object} Template attributes for InnerBlocks.
  */
-export const getIconTemplateAttributes = (blockName) => {
-	if ('core/icon' === blockName) {
+export const getIconTemplateAttributes = ( blockName ) => {
+	if ( 'core/icon' === blockName ) {
 		return {
 			style: {
 				dimensions: {
@@ -40,16 +40,18 @@ export const getIconTemplateAttributes = (blockName) => {
  * @param {string[]} additionalBlocks Extra block names from block support.
  * @return {string[]} Registered icon block names.
  */
-export const getRegisteredIconBlocks = (additionalBlocks = []) => {
+export const getRegisteredIconBlocks = ( additionalBlocks = [] ) => {
 	const fromPhp = window?.blockpartyAccordionSettings?.allowedIconBlocks;
 	const base =
-		Array.isArray(fromPhp) && fromPhp.length > 0
+		Array.isArray( fromPhp ) && fromPhp.length > 0
 			? fromPhp
 			: BLOCKPARTY_ACCORDION_DEFAULT_ICON_BLOCKS;
 
-	const candidates = [...new Set([...base, ...(additionalBlocks || [])])];
+	const candidates = [
+		...new Set( [ ...base, ...( additionalBlocks || [] ) ] ),
+	];
 
 	return candidates.filter(
-		(blockName) => typeof getBlockType(blockName) !== 'undefined'
+		( blockName ) => typeof getBlockType( blockName ) !== 'undefined'
 	);
 };
