@@ -2,7 +2,7 @@
 Contributors:      Be API Technical team
 Tags:              block
 Tested up to:      6.0
-Stable tag:        1.3.2
+Stable tag:        2.0.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,17 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 2.0.0 =
+
+* Prefer native `core/icon` for summary icons when available (WordPress 7.0+), with Blockparty / BeAPI icon blocks still allowed by default on WordPress 6.2+
+* Add `blockparty_accordion_allowed_icon_blocks` filter to customize allowed icon blocks in summaries
+* Fix editor and frontend styles for `core/icon` next to accordion labels
+* Update the summary toolbar icon control (inline SVG; drop `@beapi/icons` from the editor bundle)
+* Ship a `react-jsx-runtime` webpack polyfill so editor scripts load on WordPress 6.2–6.5
+* Upgrade the build toolchain to `@wordpress/scripts` 32+
+* Add PHPUnit, Jest, and Playwright test suites with GitHub Actions CI
+* Move release and version check scripts under `tests/bin`
 
 = 1.3.2 =
 
