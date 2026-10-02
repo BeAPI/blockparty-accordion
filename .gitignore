@@ -1,46 +1,28 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+/.git
+/.github
+/.wordpress-org
+/node_modules
+/src
+/tests
 
-# Coverage directory used by tools like istanbul
-coverage
-/coverage/
-.phpunit.result.cache
-.phplint.cache
-
-# Playwright / E2E artifacts
-/artifacts/
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
-build/
-
-# Dependency directories
-node_modules/
-
-# Optional npm cache directory
-.npm
-!package-lock.json
-
-# Optional eslint cache
-.eslintcache
-
-# Output of `npm pack`
-*.tgz
-
-# Output of `wp-scripts plugin-zip`
-*.zip
-
-# dotenv environment variables file
-.env
-
-/vendor/
-
-# WP Env
-.wp-env/plugins/
-
-# Composer
+.distignore
+.editorconfig
+.gitattributes
+.gitignore
+.plugin-data
+.stylelintrc
+.wp-env.json
+.wp-env.test.json
+CHANGELOG.md
+composer.json
 composer.lock
+eslint.config.cjs
+grumphp.yml
+LICENSE.md
+package.json
+package-lock.json
+phpcs.xml
+phpunit.xml.dist
+README.md
+webpack.config.js
+yarn.lock
