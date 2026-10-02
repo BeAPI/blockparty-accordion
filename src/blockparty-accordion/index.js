@@ -6,10 +6,10 @@ import deprecated from './deprecated';
 import metadata from './block.json';
 import { accordion } from '@beapi/icons';
 
-registerBlockType(metadata.name, {
+registerBlockType( metadata.name, {
 	...metadata,
 	icon: accordion,
 	edit: Edit,
 	save,
 	deprecated,
-});
+} );

@@ -1,24 +1,24 @@
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 // Matches markup saved before allowMultiple was always serialized on the wrapper.
-function saveWithImplicitAllowMultiple({ attributes }) {
+function saveWithImplicitAllowMultiple( { attributes } ) {
 	const { firstItemOpenByDefault, allowMultiple } = attributes;
-	const blockProps = useBlockProps.save({
+	const blockProps = useBlockProps.save( {
 		'data-first-item-open-by-default': firstItemOpenByDefault
 			? 'true'
 			: undefined,
 		'data-allow-multiple': allowMultiple ? undefined : 'false',
-	});
-	const innerBlocksProps = useInnerBlocksProps.save(blockProps);
+	} );
+	const innerBlocksProps = useInnerBlocksProps.save( blockProps );
 
-	return <div {...innerBlocksProps} />;
+	return <div { ...innerBlocksProps } />;
 }
 
-const migrateAccordionAttributes = (attributes) => ({
+const migrateAccordionAttributes = ( attributes ) => ( {
 	firstItemOpenByDefault: attributes.firstItemOpenByDefault ?? false,
 	headingLevel: attributes.headingLevel ?? 3,
 	allowMultiple: attributes.allowMultiple ?? true,
-});
+} );
 
 export default [
 	{

@@ -3,8 +3,12 @@
 # Bump the plugin version across project metadata, blocks, and docs.
 #
 # Usage (no chmod required):
-#   bash bin/bump.sh 1.4.0
-#   npm run bump -- 1.4.0
+#   bash tests/bin/bump.sh patch
+#   bash tests/bin/bump.sh minor
+#   bash tests/bin/bump.sh major
+#   bash tests/bin/bump.sh 1.2.0
+#   npm run bump -- patch
+#   npm run bump -- 1.2.0
 #
 # macOS sed (-i '') is assumed.
 #
@@ -15,7 +19,7 @@ set -euo pipefail
 # Assets — add or remove paths here
 # ---------------------------------------------------------------------------
 
-ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 
 # JSON files that expose a top-level "version" field
 JSON_VERSION_FILES=(
@@ -60,22 +64,56 @@ replace_json_version() {
 	log_updated "${file}"
 }
 
+usage() {
+	local code="${1:-0}"
+	echo "Usage: bash tests/bin/bump.sh <patch|minor|major|x.y.z>"
+	echo ""
+	echo "Examples:"
+	echo "  bash tests/bin/bump.sh patch"
+	echo "  bash tests/bin/bump.sh minor"
+	echo "  bash tests/bin/bump.sh 1.2.0"
+	echo "  npm run bump -- patch"
+	exit "${code}"
+}
+
+resolve_version() {
+	local current="$1"
+	local input="$2"
+
+	if [[ "${input}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+		echo "${input}"
+		return
+	fi
+
+	local major minor patch
+	IFS='.' read -r major minor patch <<< "${current}"
+
+	case "${input}" in
+		major)
+			echo "$((major + 1)).0.0"
+			;;
+		minor)
+			echo "${major}.$((minor + 1)).0"
+			;;
+		patch)
+			echo "${major}.${minor}.$((patch + 1))"
+			;;
+		*)
+			echo "Error: Unknown bump argument \"${input}\". Use patch, minor, major, or an explicit x.y.z version." >&2
+			exit 1
+			;;
+	esac
+}
+
 # ---------------------------------------------------------------------------
 # Args
 # ---------------------------------------------------------------------------
 
 if [[ -z "${1:-}" || "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
-	echo "Usage: bash bin/bump.sh <version>"
-	echo "Example: bash bin/bump.sh 1.4.0"
-	exit "$([[ -n "${1:-}" ]] && echo 0 || echo 1)"
+	usage "$([[ -n "${1:-}" ]] && echo 0 || echo 1)"
 fi
 
-VERSION="$1"
-
-if ! [[ "${VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-	echo "Error: Version must follow semver format (e.g. 1.4.0)" >&2
-	exit 1
-fi
+INPUT="$1"
 
 require_file ".plugin-data"
 CURRENT="$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([0-9]*\.[0-9]*\.[0-9]*\)".*/\1/p' "${ROOT_DIR}/.plugin-data" | head -n 1)"
@@ -84,6 +122,13 @@ if [[ -z "${CURRENT}" ]]; then
 	echo "Error: Could not read current version from .plugin-data" >&2
 	exit 1
 fi
+
+if ! [[ "${CURRENT}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+	echo "Error: Invalid current version \"${CURRENT}\" in .plugin-data" >&2
+	exit 1
+fi
+
+VERSION="$(resolve_version "${CURRENT}" "${INPUT}")"
 
 if [[ "${VERSION}" == "${CURRENT}" ]]; then
 	echo "Error: Version is already ${CURRENT}" >&2
@@ -139,7 +184,6 @@ if ! grep -q "^= ${VERSION} =$" "${ROOT_DIR}/${README_TXT}"; then
 				print "* "
 				print ""
 				getline
-				# Consume the blank line that followed "== Changelog ==".
 				if ( $0 != "" ) {
 					print
 				}
@@ -171,9 +215,6 @@ else
 				print "- "
 				print ""
 				inserted = 1
-				# Re-print the blank line we consumed only if it was not blank?
-				# Marker is followed by a blank line; we already printed "" above.
-				# Next input line after getline is the blank — skip it.
 				next
 			}
 		}

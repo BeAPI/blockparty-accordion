@@ -4,9 +4,9 @@ import save from './save';
 import metadata from './block.json';
 import { accordionTitle } from '@beapi/icons';
 
-registerBlockType(metadata.name, {
+registerBlockType( metadata.name, {
 	...metadata,
 	icon: accordionTitle,
 	edit: Edit,
 	save,
-});
+} );

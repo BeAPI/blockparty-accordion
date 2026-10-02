@@ -12,14 +12,14 @@ A WordPress plugin that adds accessible accordion blocks to the Gutenberg editor
 
 ## Description
 
-Blockparty Accordion is a WordPress plugin that provides a set of nested blocks to build an accordion: a root **Accordion** block contains **Item** blocks; each item is made of a **Summary** (the visible title and button trigger) and a **Panel** (the expandable content region). You can open the first item by default from the parent block, and the **Summary** block can host the **blockparty/icons** block when you need an icon next to the label.
+Blockparty Accordion is a WordPress plugin that provides a set of nested blocks to build an accordion: a root **Accordion** block contains **Item** blocks; each item is made of a **Summary** (the visible title and button trigger) and a **Panel** (the expandable content region). You can open the first item by default from the parent block, and the **Summary** block can host an icon block next to the label when you need a visual marker.
 
 ## Features
 
 - **Native Gutenberg blocks**: Accordion, Item, Summary, and Panel blocks, registered from `block.json`
 - **Accessible behavior**: Triggers, panels, and focus management through `@beapi/be-a11y` [accessible accordion](https://github.com/BeAPI/be-a11y) (see the view script on the main accordion block)
 - **Editor options** (root Accordion): e.g. “Open first item by default”
-- **Summary block**: icon support via **blockparty/icons** where applicable
+- **Summary block**: icon support via `core/icon` (WordPress 7.0+), **blockparty/icon**, or **beapi/icon-block** when registered
 - **Internationalized** with text domain `blockparty-accordion` (e.g. French in `languages/`) and `wp_set_script_translations` for the editor
 - **Frontend view script** on the main accordion block for expand/collapse behavior
 - **Configurable** via the `beapi_accordion_block_config` filter (see below)
@@ -59,10 +59,37 @@ npm run build
 
 1. In the block editor, insert an **Accordion** block (e.g. under the **Widgets** category, search for *Accordion*).
 2. Add **Item** blocks inside the accordion. Each item contains a **Summary** and a **Panel**:
-   - **Summary** — the clickable title line (supports a blockparty icon in the icon slot where configured).
+   - **Summary** — the clickable title line (optional icon via the block toolbar).
    - **Panel** — the collapsible content (InnerBlocks as defined by the block).
 3. Select the **Accordion** block to toggle **Open first item by default** if you want the first item open on page load.
 4. On the frontend, the accordion uses the same structure; behavior is provided by the bundled view script and `@beapi/be-a11y`.
+
+### Summary icons
+
+1. Select a **Summary** block inside an item.
+2. In the block toolbar, click **Icon**.
+3. Choose an icon from a registered icon block.
+
+By default the plugin allows, in order:
+
+1. `core/icon` (WordPress 7.0+)
+2. `blockparty/icon`
+3. `beapi/icon-block`
+
+Only registered blocks are kept, so on WordPress 6.2–6.9 icons work when Blockparty Icons or BeAPI Icon Block is active. On WordPress 7.0+, `core/icon` is preferred when present.
+
+Customize the list with the `blockparty_accordion_allowed_icon_blocks` filter:
+
+```php
+add_filter(
+	'blockparty_accordion_allowed_icon_blocks',
+	static function (): array {
+		return [ 'core/icon' ];
+	}
+);
+```
+
+The first registered block in the list is used as the default template when enabling an icon on a summary.
 
 ## Filter: `beapi_accordion_block_config`
 
@@ -109,8 +136,35 @@ npm run lint:js
 npm run lint:css
 npm run format
 npm run plugin-zip
-npm run start:env   # @wordpress/env
-npm run stop:env
+npm run env:start   # @wordpress/env (dev, port 8888)
+npm run env:stop
+```
+
+### Testing
+
+PHP integration tests run inside an isolated wp-env instance (port `8889`):
+
+```bash
+composer install
+npm install
+npm run build
+npm run env:start-tests
+npm run test:php
+npm run env:stop-tests
+```
+
+JavaScript unit tests (Jest via `@wordpress/scripts`):
+
+```bash
+npm run test:unit:js
+```
+
+End-to-end tests (Playwright — editor insertion + frontend accordion behavior):
+
+```bash
+npx playwright install chromium
+npm run build
+npm run test:e2e
 ```
 
 ### i18n (optional)

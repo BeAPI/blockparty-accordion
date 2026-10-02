@@ -1,11 +1,12 @@
 /* style */
 .wp-block-blockparty-accordion {
     --wp--blockparty--accordion--border: 1px solid #000;
-    --wp--blockparty--accordion--font-size: var(--wp--preset--font-size--h-3);
+    --wp--blockparty--accordion--font-size: inherit;
     --wp--blockparty--accordion--font-weight: 400;
     --wp--blockparty--accordion--padding: 1rem 0;
     --wp--blockparty--accordion--padding-with-background: 1rem;
     --wp--blockparty--accordion--icon-size: 24px;
+    --wp--blockparty--accordion-trigger--gap: 4px;
 
     $block: &;
 
@@ -17,10 +18,9 @@
         border-bottom: var(--wp--blockparty--accordion--border);
 
         .wp-block-blockparty-icon,
-        .wp-block-beapi-icon-block {
-            margin-top: 0;
-            margin-right: 8px;
-            margin-bottom: 0;
+        .wp-block-beapi-icon-block,
+        .wp-block-icon {
+            margin: 0;
 
             .icon-container {
                 display: flex;
@@ -44,6 +44,7 @@
     &-trigger {
         position: relative;
         display: flex;
+        gap: var(--wp--blockparty--accordion-trigger--gap);
         align-items: center;
         width: 100%;
         padding: 0;
