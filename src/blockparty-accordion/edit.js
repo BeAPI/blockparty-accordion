@@ -27,10 +27,10 @@ import { __, sprintf } from '@wordpress/i18n';
 import './editor.scss';
 
 const BLOCKS_CHILD = 'blockparty/accordion-item';
-const ALLOWED_BLOCKS = [BLOCKS_CHILD];
+const ALLOWED_BLOCKS = [ BLOCKS_CHILD ];
 const SUMMARY_BLOCK = 'blockparty/accordion-summary';
 
-const HEADING_LEVELS = [2, 3, 4, 5, 6];
+const HEADING_LEVELS = [ 2, 3, 4, 5, 6 ];
 
 const HEADING_LEVEL_ICONS = {
 	2: headingLevel2,
@@ -40,115 +40,123 @@ const HEADING_LEVEL_ICONS = {
 	6: headingLevel6,
 };
 
-function collectSummaryBlocks(blocks) {
-	return blocks.flatMap((block) => {
-		const summaries = block.name === SUMMARY_BLOCK ? [block] : [];
-		return summaries.concat(collectSummaryBlocks(block.innerBlocks || []));
-	});
+function collectSummaryBlocks( blocks ) {
+	return blocks.flatMap( ( block ) => {
+		const summaries = block.name === SUMMARY_BLOCK ? [ block ] : [];
+		return summaries.concat(
+			collectSummaryBlocks( block.innerBlocks || [] )
+		);
+	} );
 }
 
-function useSyncSummaryHeadingLevels(headingLevel) {
+function useSyncSummaryHeadingLevels( headingLevel ) {
 	const { clientId } = useBlockEditContext();
-	const { updateBlockAttributes } = useDispatch(blockEditorStore);
+	const { updateBlockAttributes } = useDispatch( blockEditorStore );
 	const summaryBlocks = useSelect(
-		(select) => {
-			const { getBlocksByClientId } = select(blockEditorStore);
-			const [accordionBlock] = getBlocksByClientId(clientId);
+		( select ) => {
+			const { getBlocksByClientId } = select( blockEditorStore );
+			const [ accordionBlock ] = getBlocksByClientId( clientId );
 
-			return collectSummaryBlocks(accordionBlock?.innerBlocks || []);
+			return collectSummaryBlocks( accordionBlock?.innerBlocks || [] );
 		},
-		[clientId]
+		[ clientId ]
 	);
 
-	useEffect(() => {
-		summaryBlocks.forEach((block) => {
-			if (block.attributes.headingLevel !== headingLevel) {
-				updateBlockAttributes(block.clientId, { headingLevel });
+	useEffect( () => {
+		summaryBlocks.forEach( ( block ) => {
+			if ( block.attributes.headingLevel !== headingLevel ) {
+				updateBlockAttributes( block.clientId, { headingLevel } );
 			}
-		});
-	}, [headingLevel, summaryBlocks, updateBlockAttributes]);
+		} );
+	}, [ headingLevel, summaryBlocks, updateBlockAttributes ] );
 }
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const { firstItemOpenByDefault, headingLevel, allowMultiple } = attributes;
 	const blockProps = useBlockProps();
-	const innerBlocksProps = useInnerBlocksProps(blockProps, {
+	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
-		template: [[BLOCKS_CHILD], [BLOCKS_CHILD], [BLOCKS_CHILD]],
-	});
+		template: [ [ BLOCKS_CHILD ], [ BLOCKS_CHILD ], [ BLOCKS_CHILD ] ],
+	} );
 
-	useSyncSummaryHeadingLevels(headingLevel);
+	useSyncSummaryHeadingLevels( headingLevel );
 
 	return (
 		<>
 			<InspectorControls>
 				<Panel>
 					<PanelBody
-						title={__('Accessibility', 'blockparty-accordion')}
+						title={ __( 'Accessibility', 'blockparty-accordion' ) }
 					>
 						<ToggleGroupControl
-							label={__(
+							label={ __(
 								'Summary heading level',
 								'blockparty-accordion'
-							)}
-							help={__(
+							) }
+							help={ __(
 								'Define the heading level for each accordion summary.',
 								'blockparty-accordion'
-							)}
-							value={headingLevel}
+							) }
+							value={ headingLevel }
 							isBlock
 							__next40pxDefaultSize
-							onChange={(value) =>
-								setAttributes({ headingLevel: Number(value) })
+							onChange={ ( value ) =>
+								setAttributes( {
+									headingLevel: Number( value ),
+								} )
 							}
 						>
-							{HEADING_LEVELS.map((level) => (
+							{ HEADING_LEVELS.map( ( level ) => (
 								<ToggleGroupControlOptionIcon
-									key={level}
-									value={level}
-									icon={HEADING_LEVEL_ICONS[level]}
-									label={sprintf(
+									key={ level }
+									value={ level }
+									icon={ HEADING_LEVEL_ICONS[ level ] }
+									label={ sprintf(
 										/* translators: %d: heading level number (2–6). */
 										__(
 											'Heading level %d',
 											'blockparty-accordion'
 										),
 										level
-									)}
+									) }
 								/>
-							))}
+							) ) }
 						</ToggleGroupControl>
 					</PanelBody>
-					<PanelBody title={__('Settings', 'blockparty-accordion')}>
+					<PanelBody
+						title={ __( 'Settings', 'blockparty-accordion' ) }
+					>
 						<ToggleControl
-							label={__(
+							label={ __(
 								'Open first item by default',
 								'blockparty-accordion'
-							)}
-							help={__(
+							) }
+							help={ __(
 								'The first item will be opened by default when the page loads if this option is enabled.',
 								'blockparty-accordion'
-							)}
-							checked={firstItemOpenByDefault}
-							onChange={(value) =>
-								setAttributes({ firstItemOpenByDefault: value })
+							) }
+							checked={ firstItemOpenByDefault }
+							onChange={ ( value ) =>
+								setAttributes( {
+									firstItemOpenByDefault: value,
+								} )
 							}
 						/>
 						<ToggleControl
-							label={__('Auto-close', 'blockparty-accordion')}
-							help={__(
+							label={ __( 'Auto-close', 'blockparty-accordion' ) }
+							help={ __(
 								'When enabled, opening a panel closes any other open panel.',
 								'blockparty-accordion'
-							)}
-							checked={!allowMultiple}
-							onChange={(value) =>
-								setAttributes({ allowMultiple: !value })
+							) }
+							checked={ ! allowMultiple }
+							onChange={ ( value ) =>
+								setAttributes( { allowMultiple: ! value } )
 							}
 						/>
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
-			<div {...innerBlocksProps} />
+			<div { ...innerBlocksProps } />
 		</>
 	);
 }

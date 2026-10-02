@@ -4,9 +4,9 @@ import save from './save';
 import metadata from './block.json';
 import { contents } from '@wordpress/icons';
 
-registerBlockType(metadata.name, {
+registerBlockType( metadata.name, {
 	...metadata,
 	icon: contents,
 	edit: Edit,
 	save,
-});
+} );

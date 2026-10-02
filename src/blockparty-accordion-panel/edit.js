@@ -3,38 +3,38 @@ import { select } from '@wordpress/data';
 
 export default function Edit() {
 	let allowedBlocks = [];
-	const hasSupport = select('core/blocks').hasBlockSupport(
+	const hasSupport = select( 'core/blocks' ).hasBlockSupport(
 		'blockparty/acordion',
 		'acordionPanelBlocks'
 	);
-	if (hasSupport) {
-		allowedBlocks = select('core/blocks').getBlockSupport(
+	if ( hasSupport ) {
+		allowedBlocks = select( 'core/blocks' ).getBlockSupport(
 			'blockparty/acordion',
 			'acordionPanelBlocks'
 		);
 	} else {
-		allowedBlocks = select('core/blocks')
+		allowedBlocks = select( 'core/blocks' )
 			.getBlockTypes()
-			.map((block) => {
+			.map( ( block ) => {
 				return block.name;
-			})
-			.filter((blockName) => {
+			} )
+			.filter( ( blockName ) => {
 				return (
 					blockName !== 'blockparty/accordion' &&
 					blockName !== 'blockparty/accordion-item' &&
 					blockName !== 'blockparty/accordion-summary' &&
 					blockName !== 'blockparty/accordion-panel'
 				);
-			});
+			} );
 	}
 
 	return (
-		<div {...useBlockProps()}>
+		<div { ...useBlockProps() }>
 			<div className="wp-block-blockparty-accordion-panel__inner">
 				<InnerBlocks
-					allowedBlocks={allowedBlocks}
-					templateLock={false}
-					template={[['core/paragraph']]}
+					allowedBlocks={ allowedBlocks }
+					templateLock={ false }
+					template={ [ [ 'core/paragraph' ] ] }
 				/>
 			</div>
 		</div>

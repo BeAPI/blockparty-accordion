@@ -7,7 +7,6 @@
 
 .distignore
 .editorconfig
-.eslintrc
 .gitattributes
 .gitignore
 .plugin-data
