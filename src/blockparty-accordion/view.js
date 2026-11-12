@@ -1,5 +1,10 @@
 import { Accordion } from '@beapi/be-a11y';
 
+/**
+ * Internal dependencies
+ */
+import { getAccordionConfig } from './getAccordionConfig';
+
 // eslint-disable-next-line no-undef
 const accordionConfig = beapiAccordionBlock.accordionConfig;
 
@@ -10,9 +15,10 @@ const accordionConfig = beapiAccordionBlock.accordionConfig;
 const initAccordions = () => {
 	const selector = '.wp-block-blockparty-accordion';
 	const elements = document.querySelectorAll( selector );
+	const baseConfig = getAccordionConfig( accordionConfig );
 
 	elements.forEach( ( el ) => {
-		const config = { ...accordionConfig };
+		const config = { ...baseConfig };
 
 		if ( el.dataset.firstItemOpenByDefault === 'true' ) {
 			config.closedDefault = false;
