@@ -64,4 +64,44 @@ class RenderFirstItemExpandedTest extends WP_UnitTestCase {
 			$result
 		);
 	}
+
+	/**
+	 * @return void
+	 */
+	public function test_returns_content_unchanged_when_no_trigger_present(): void {
+		$block = [
+			'blockName' => 'blockparty/accordion',
+			'attrs'     => [ 'firstItemOpenByDefault' => true ],
+		];
+
+		$without_button = '<div><p>No trigger here</p></div>';
+		$this->assertSame(
+			$without_button,
+			render_accordion_first_item_expanded( $without_button, $block )
+		);
+
+		$without_attribute = '<div><button type="button">Item</button></div>';
+		$this->assertSame(
+			$without_attribute,
+			render_accordion_first_item_expanded( $without_attribute, $block )
+		);
+	}
+
+	/**
+	 * @return void
+	 */
+	public function test_does_not_modify_aria_expanded_text_before_first_trigger(): void {
+		$content = '<p>Use aria-expanded="false" on triggers.</p><button aria-expanded="false">First</button><button aria-expanded="false">Second</button>';
+		$block   = [
+			'blockName' => 'blockparty/accordion',
+			'attrs'     => [ 'firstItemOpenByDefault' => true ],
+		];
+
+		$result = render_accordion_first_item_expanded( $content, $block );
+
+		$this->assertSame(
+			'<p>Use aria-expanded="false" on triggers.</p><button aria-expanded="true">First</button><button aria-expanded="false">Second</button>',
+			$result
+		);
+	}
 }

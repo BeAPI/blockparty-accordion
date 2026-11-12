@@ -165,6 +165,9 @@ function allow_aria_attributes( $tags, $context ) {
  * avoids that shift. The summary block cannot know it is the first item, so it always
  * outputs aria-expanded="false"; this filter corrects the first trigger only.
  *
+ * The first `button` carrying an `aria-expanded` attribute is updated through the HTML API
+ * (WP_HTML_Tag_Processor). Content with no such trigger is returned unchanged.
+ *
  * @param string $block_content The block content.
  * @param array  $block        The full block, including blockName and attrs.
  * @return string Filtered block content.
@@ -177,13 +180,15 @@ function render_accordion_first_item_expanded( $block_content, $block ) {
 	if ( ! $first_open ) {
 		return $block_content;
 	}
-	// Replace only the first occurrence (first trigger) so the first item is expanded.
-	$block_content = preg_replace(
-		'/aria-expanded="false"/',
-		'aria-expanded="true"',
-		$block_content,
-		1
-	);
+
+	$processor = new \WP_HTML_Tag_Processor( $block_content );
+	while ( $processor->next_tag( 'button' ) ) {
+		if ( null !== $processor->get_attribute( 'aria-expanded' ) ) {
+			$processor->set_attribute( 'aria-expanded', 'true' );
+			return $processor->get_updated_html();
+		}
+	}
+
 	return $block_content;
 }
 
