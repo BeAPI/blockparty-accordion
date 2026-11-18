@@ -1,7 +1,10 @@
 import { Accordion } from '@beapi/be-a11y';
+import { getAccordionConfig } from './getAccordionConfig';
 
-// eslint-disable-next-line no-undef
-const accordionConfig = beapiAccordionBlock.accordionConfig;
+const accordionConfig = getAccordionConfig(
+	// eslint-disable-next-line no-undef
+	beapiAccordionBlock.accordionConfig
+);
 
 /**
  * Initialize beapi-accordion instances.
