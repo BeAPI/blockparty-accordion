@@ -64,4 +64,38 @@ class RenderFirstItemExpandedTest extends WP_UnitTestCase {
 			$result
 		);
 	}
+
+	/**
+	 * @return void
+	 */
+	public function test_leaves_content_unchanged_when_no_trigger(): void {
+		$content = '<div class="wp-block-blockparty-accordion"><p>No trigger here</p></div>';
+		$block   = [
+			'blockName' => 'blockparty/accordion',
+			'attrs'     => [ 'firstItemOpenByDefault' => true ],
+		];
+
+		$this->assertSame(
+			$content,
+			render_accordion_first_item_expanded( $content, $block )
+		);
+	}
+
+	/**
+	 * @return void
+	 */
+	public function test_ignores_attribute_string_in_text_before_first_trigger(): void {
+		$content = '<p>Use aria-expanded="false" on triggers.</p><button aria-expanded="false">First</button><button aria-expanded="false">Second</button>';
+		$block   = [
+			'blockName' => 'blockparty/accordion',
+			'attrs'     => [ 'firstItemOpenByDefault' => true ],
+		];
+
+		$result = render_accordion_first_item_expanded( $content, $block );
+
+		$this->assertSame(
+			'<p>Use aria-expanded="false" on triggers.</p><button aria-expanded="true">First</button><button aria-expanded="false">Second</button>',
+			$result
+		);
+	}
 }
