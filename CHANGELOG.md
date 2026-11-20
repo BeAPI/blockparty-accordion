@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- Use `WP_HTML_Tag_Processor` to expand the first accordion trigger instead of a regular expression
+
 ## 2.0.0 - 2026-10-02
 
 - Prefer native `core/icon` for summary icons when available (WordPress 7.0+), with Blockparty / BeAPI icon blocks still allowed by default on WordPress 6.2+
